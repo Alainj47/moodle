@@ -8,6 +8,6 @@
 */
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version  = 2022090900;
+$plugin->version  = 2022090902;
 $plugin->requires = 2019052000; // Requires 3.7
 $plugin->component = 'local_plugintest';

@@ -4,6 +4,7 @@ services:
     image: moodlehq/moodle-php-apache:7.3
     volumes:
       - ${MOODLE_DIR}:/var/www/html
+      - ./local/plugintest:/var/www/html/local/plugintest
     ports:
       - "${MOODLE_PORT}:80"
   db:
