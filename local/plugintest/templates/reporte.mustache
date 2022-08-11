@@ -1,0 +1,41 @@
+<br>
+<div style="width:100%;">
+    <h3>{{# str }} tablacursos, local_plugintest {{/ str }}</h3>
+    <table class="tftable table table-bordered">
+        <tr>
+            <th>Full name</th>
+            <th>Short name</th>
+            <th>Date</th>
+        </tr>
+        {{#cursos}}
+        <tr>
+            <td class="left">{{fullname}}</td>
+            <td class="center">{{shortname}}</td>
+            <td class="center">{{timecreated}}</td>
+        </tr>
+        {{/cursos}}
+    </table>
+</div>
+<br><br>
+
+<br>
+<div style="width:100%;">
+    <h3>{{# str }} tablausuarios, local_plugintest {{/ str }}</h3>
+    <table class="tftable table table-bordered">
+        <tr>
+            <th>Username</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+        </tr>
+        {{#users}}
+        <tr>
+            <td class="left">{{username}}</td>
+            <td class="center">{{firstname}}</td>
+            <td class="center">{{lastname}}</td>
+            <td class="center">{{email}}</td>
+        </tr>
+        {{/users}}
+    </table>
+</div>
+<br><br>

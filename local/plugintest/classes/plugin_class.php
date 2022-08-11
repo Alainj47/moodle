@@ -12,7 +12,7 @@ class plugin_class{
         return $datos;
     }
 
-    public static function get_courses(){
+    public static function get_all_courses(){
         
         return get_courses();
     }
