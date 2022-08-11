@@ -2,6 +2,8 @@
 
 require_once('../../config.php');
 require_once("classes/plugin_class.php");
+require_once($CFG->libdir.'/tablelib.php');
+require_once('classes/data_table.php');
 
 require_login();
 /**
@@ -12,9 +14,9 @@ global $PAGE, $OUTPUT, $CFG, $DB;
 
 $PAGE->set_context(context_system::instance());
 $PAGE->set_url(new moodle_url('/local/plugintest/view.php'));
-$PAGE->set_title('Example Report');
-$PAGE->set_heading('Reporte');
-echo $OUTPUT->header();
+//$PAGE->set_title('Example Report');
+//$PAGE->set_heading('Reporte');
+//echo $OUTPUT->header();
 
 $test = plugin_class::get_plugintest();
 
@@ -47,7 +49,28 @@ foreach($all_users as $user){
 
 
 
-echo $OUTPUT->render_from_template('local_plugintest/reporte', array('cursos' => $courses, 'users' => $users));
+//echo $OUTPUT->render_from_template('local_plugintest/reporte', array('cursos' => $courses, 'users' => $users));
+
+$download = optional_param('download', '', PARAM_ALPHA);
+
+$table = new data_table('id');
+
+$table->is_downloading($download, 'Feedback Report', 'Feedback Report');
+
+$fields = 'aa.*';
+$from = '{user} aa';
+$where = '1=1';
+
+if (!$table->is_downloading()) {        
+    $PAGE->set_title('Feedback Report');
+    $PAGE->set_heading('Reporte');   
+    echo $OUTPUT->header(); 
+         
+}
+
+$table->set_sql($fields, $from, $where);
+$table->define_baseurl("$CFG->wwwroot/local/plugintest/view.php");
+$table->out(20, true);
 
 /* echo "<pre>";
 
